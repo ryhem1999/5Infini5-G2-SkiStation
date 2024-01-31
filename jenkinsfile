@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Getting project from Git') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/rihemchagour-G2-SkiStation']],
+                    extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/ryhem1999/5Infini5-G2-SkiStation.git']]])
+            }
+        }
+
+        stage('Cleaning the project') {
+            steps {
+                sh "mvn -B -DskipTests clean"
+            }
+        }
+
+        stage('Artifact Construction') {
+            steps {
+                sh "mvn -B -DskipTests package"
+            }
+        }
+
+        stage('Unit Tests') {
+            steps {
+                sh "mvn test"
+            }
+        }
+    }
+}

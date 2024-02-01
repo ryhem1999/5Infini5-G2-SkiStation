@@ -27,5 +27,23 @@ pipeline {
                 sh "mvn test"
             }
         }
+
+        stage('Unit Tests') {
+                    steps {
+                        sh "mvn test"
+                    }
+                }
+
+        stage('Code Quality Check via SonarQube') {
+                    steps {
+                        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.projectName='skier' -Dsonar.host.url=http://172.10.0.140:9000 -Dsonar.token=sqp_86efa765b2f5080cd57b394cf2cfccbc18dba24e"
+                    }
+                }
+
+                stage('Publish to Nexus') {
+                    steps {
+                        sh 'mvn deploy'
+                    }
+                }
     }
 }

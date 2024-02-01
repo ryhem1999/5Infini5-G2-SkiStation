@@ -28,15 +28,11 @@ pipeline {
             }
         }
 
-        stage('Code Quality Check via SonarQube') {
-            steps {
-                script {
-                    withSonarQubeEnv('sonar-server') {
-                        sh 'mvn clean package sonar:sonar'
+          stage('Code Quality Check via SonarQube') {
+                    steps {
+                        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.host.url=http://172.10.0.140:9000 -Dsonar.login=6f70be821f0fbf77ebf37416403f05771f71b5cc"
                     }
                 }
-            }
-        }
 
         stage('Publish to Nexus') {
             steps {

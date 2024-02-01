@@ -28,21 +28,20 @@ pipeline {
             }
         }
 
-        stages {
-                stage('Code Quality Check via SonarQube') {
-                    steps {
-                        script {
-                            withSonarQubeEnv('sonar-server') {
-                                sh 'mvn clean package sonar:sonar'
-                            }
-                        }
+        stage('Code Quality Check via SonarQube') {
+            steps {
+                script {
+                    withSonarQubeEnv('sonar-server') {
+                        sh 'mvn clean package sonar:sonar'
                     }
                 }
+            }
+        }
 
-                stage('Publish to Nexus') {
-                    steps {
-                        sh 'mvn deploy'
-                    }
-                }
+        stage('Publish to Nexus') {
+            steps {
+                sh 'mvn deploy'
+            }
+        }
     }
 }

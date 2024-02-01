@@ -26,11 +26,11 @@ pipeline {
             steps {
                 sh "mvn test"
             }
-        }
+        }86efa765b2f5080cd57b394cf2cfccbc18dba24e
 
         stage('Code Quality Check via SonarQube') {
                     steps {
-                        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.projectName='skier' -Dsonar.host.url=http://172.10.0.140:9000 -Dsonar.token=sqp_86efa765b2f5080cd57b394cf2cfccbc18dba24e"
+                        sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.projectName='skier' -Dsonar.host.url=http://172.10.0.140:9000 -Dsonar.token=86efa765b2f5080cd57b394cf2cfccbc18dba24e"
                     }
                 }
 

@@ -74,10 +74,7 @@ pipeline {
 
     post {
         always {
-            script {
-                // Cleanup: Stop the services after the job completes
-                sh 'docker-compose down'
-            }
+             cleanWs()
         }
     }
 }

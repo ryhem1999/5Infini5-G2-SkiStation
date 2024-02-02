@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image from the Dockerfile
-                    sh 'docker build -t rihem05/backend:latest .'
+                    sh 'docker build -t rihemchagour/backend:latest .'
                 }
             }
         }
@@ -54,7 +54,7 @@ pipeline {
                 script {
                     // Login to Docker Hub and push the Docker image
                     sh 'echo "r11031999" | docker login --username "rihem05" --password-stdin'
-                    sh 'docker push rihem05/backend:latest'
+                    sh 'docker push rihemchagour/backend:latest'
                 }
             }
         }

@@ -43,6 +43,9 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    // Install Docker Compose
+                    sh 'sudo apt-get install -y docker-compose'
+
                     // Build the Docker image from the Dockerfile
                     sh 'docker build -t rihemchagour/backend:latest .'
                 }

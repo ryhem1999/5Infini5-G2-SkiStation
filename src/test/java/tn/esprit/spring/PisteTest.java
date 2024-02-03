@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PisteTest {
 
@@ -52,6 +52,8 @@ public class PisteTest {
     void testGetSlope() {
         assertEquals(30, piste.getSlope());
     }
+
+
 
 
 }

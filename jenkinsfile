@@ -47,7 +47,7 @@ pipeline {
                     sh 'sudo apt-get install -y docker-compose'
 
                     // Build the Docker image from the Dockerfile
-                    sh 'docker build -t rihemchagour/backend:latest .'
+                    sh 'docker build -t rihemchagour-g2 .'
                 }
             }
         }
@@ -57,7 +57,8 @@ pipeline {
                 script {
                     // Login to Docker Hub and push the Docker image
                     sh 'echo "r11031999" | docker login --username "rihem05" --password-stdin'
-                    sh 'docker push rihemchagour/backend:latest'
+                    sh 'docker tag rihemchagour-g2 rihem05-devops:latest'
+                    sh 'docker push rihem05-devops'
                 }
             }
         }

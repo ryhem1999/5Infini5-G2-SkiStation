@@ -43,22 +43,20 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    // Install Docker Compose
-                    sh 'sudo apt-get install -y docker-compose'
-
                     // Build the Docker image from the Dockerfile
                     sh 'docker build -t rihemchagour-g2 .'
                 }
             }
         }
 
+
         stage('Push Docker Image') {
             steps {
                 script {
                     // Login to Docker Hub and push the Docker image
                     sh 'echo "r11031999" | docker login --username "rihem05" --password-stdin'
-                    sh 'docker tag rihemchagour-g2 rihem05-devops:latest'
-                    sh 'docker push rihem05-devops'
+                    sh 'docker tag rihemchagour-g2 rihem05/devops:latest'
+                    sh 'docker push rihem05/devops:latest'
                 }
             }
         }
@@ -66,11 +64,15 @@ pipeline {
         stage('Docker Compose') {
             steps {
                 script {
+                    // Stop and remove existing containers
+                    sh 'docker-compose down'
+
                     // Deploy the application using Docker Compose
                     sh 'docker-compose up -d'
                 }
             }
         }
+
     }
 
     post {

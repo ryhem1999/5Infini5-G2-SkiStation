@@ -61,7 +61,7 @@ pipeline {
             }
         }
 
-        stage('Docker Compose') {
+     /*   stage('Docker Compose') {
             steps {
                 script {
                     // Stop and remove existing containers
@@ -71,7 +71,14 @@ pipeline {
                     sh 'docker-compose up -d'
                 }
             }
-        }
+        }*/
+        stage('Run Spring && MySQL Containers') {
+                                steps {
+                                    script {
+                                      sh 'docker compose up -d'
+                                    }
+                                }
+                            }
 
 
 		   stage('Notification by Email') {

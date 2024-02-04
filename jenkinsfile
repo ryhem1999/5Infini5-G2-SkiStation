@@ -73,6 +73,19 @@ pipeline {
             }
         }
 
+
+		   stage('Notification by Email') {
+                                 steps {
+                                     mail bcc: '',
+                                         body: '''Hi Welcome to Jenkins email alerts
+                     Thanks
+                     Rihem Chagour''',
+                                         subject: 'Jenkins Job',
+                                         to: 'rihemchagour5@gmail.com'
+                                 }
+                             }
+
+
     }
 
     post {

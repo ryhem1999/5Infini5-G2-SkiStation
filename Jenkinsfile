@@ -54,9 +54,9 @@ pipeline {
             steps {
                 script {
                     // Login to Docker Hub and push the Docker image
-                    sh 'echo "ghassen1234" | docker login --username "ghassenmarzouk252" --password-stdin'
-                    sh 'docker tag skitest ghassenmarzouk252/skitest:latest'
-                    sh 'docker push ghassenmarzouk252/skitest:latest'
+                    sh 'echo "ghassen1234" | sudo docker login --username "ghassenmarzouk252" --password-stdin'
+                    sh 'sudo docker tag skitest ghassenmarzouk252/skitest:latest'
+                    sh 'sudo docker push ghassenmarzouk252/skitest:latest'
                 }
             }
         }
@@ -68,7 +68,7 @@ pipeline {
                     //sh 'docker-compose down'
 
                     // Deploy the application using Docker Compose
-                    sh 'docker-compose up -d'
+                    sh 'sudo docker-compose up -d'
                 }
             }
        }

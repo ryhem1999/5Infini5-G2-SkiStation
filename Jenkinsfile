@@ -16,12 +16,12 @@ pipeline {
             }
         }
 
-        stage('Artifact Construction') {
+        stage('Maven build') {
             steps {
                 sh "mvn -B -DskipTests package"
             }
         }
-
+/*
         stage('Junit/mockito') {
             steps {
                 sh "mvn test"
@@ -44,34 +44,34 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image from the Dockerfile
-                    sh 'docker build -t rihemchagour-g2 .'2
+                    sh 'docker build -t skitest .'
                 }
             }
         }
 
-
+*/
         stage('Push Docker Image') {
             steps {
                 script {
                     // Login to Docker Hub and push the Docker image
-                    sh 'echo "r11031999" | docker login --username "rihem05" --password-stdin'
-                    sh 'docker tag rihemchagour-g2 rihem05/devops:latest'
-                    sh 'docker push rihem05/devops:latest'
+                    sh 'echo "ghassen1234" | docker login --username "ghassenmarzouk252" --password-stdin'
+                    sh 'docker tag skitest ghassenmarzouk252/skitest:latest'
+                    sh 'docker push ghassenmarzouk252/skitest:latest'
                 }
             }
         }
 
-     /*   stage('Docker Compose') {
+       stage('Docker Compose') {
             steps {
                 script {
                     // Stop and remove existing containers
-                    sh 'docker-compose down'
+                    //sh 'docker-compose down'
 
                     // Deploy the application using Docker Compose
                     sh 'docker-compose up -d'
                 }
             }
-        }*/
+
         /*
         stage('Run Spring && MySQL Containers') {
                                 steps {
@@ -81,7 +81,7 @@ pipeline {
                                 }
                             }
 
-
+/*
 		   stage('Notification by Email') {
                                  steps {
                                      mail bcc: '',

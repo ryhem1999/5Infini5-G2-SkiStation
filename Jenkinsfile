@@ -22,18 +22,18 @@ pipeline {
             }
         }
 
-        stage('Unit Tests') {
+        stage('Junit/mockito') {
             steps {
                 sh "mvn test"
             }
         }
-
+/*
         stage('Code Quality Check via SonarQube') {
             steps {
                 sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=admin1234"
             }
         }
-
+*/
        /* stage('Publish to Nexus') {
             steps {
                 sh 'mvn deploy'

@@ -1,6 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ import lombok.experimental.FieldDefaults;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
+
 @FieldDefaults(level=AccessLevel.PRIVATE)
 @Entity
 public class Course implements Serializable {
@@ -33,6 +34,8 @@ public class Course implements Serializable {
 
 	@JsonIgnore
 	@OneToMany(mappedBy= "course")
-	Set<Registration> registrations;
-
+	Set<Registration> registrations = new HashSet<>();
+	public Course() {
+		this.registrations = new HashSet<>();
+	}
 }

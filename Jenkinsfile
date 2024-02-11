@@ -3,6 +3,7 @@ pipeline {
     environment {
         DOCKER_USERNAME = 'ghassenmarzouk252'
         DOCKER_PASSWORD = 'ghassen1234'
+
     }
     stages {
         stage('Getting project from Git') {
@@ -78,11 +79,11 @@ pipeline {
       stage('Push') {
                   steps {
                       script {
-                          withCredentials([string(credentialsId: '', variable: 'DOCKER_PASSWORD')]) {
-                              sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+
+                              sh "docker login -u ghassenmarzouk252 -p ghassen1234"
                               sh 'docker tag skitest ghassenmarzouk252/skitest:latest'
                               sh 'docker push ghassenmarzouk252/skitest:latest'
-                          }
+
                       }
                   }
                 }

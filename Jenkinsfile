@@ -31,13 +31,13 @@ pipeline {
                 sh "mvn test"
             }
         }
-/*
+
         stage('Code Quality Check via SonarQube') {
             steps {
-                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.host.url=  -Dsonar.login=admin1234"
+                sh "mvn clean verify sonar:sonar -Dsonar.host.url=http://192.168.33.10:9000  -Dsonar.login=squ_135249f1bb5c6e3b92b1eb7044c16ecbe9b12c73"
             }
         }
-*/
+
        /* stage('Publish to Nexus') {
             steps {
                 sh 'mvn deploy'

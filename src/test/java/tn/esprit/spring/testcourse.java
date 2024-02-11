@@ -8,6 +8,7 @@ import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.Registration; // Ajout de cette ligne
 import tn.esprit.spring.entities.Support;
@@ -24,7 +25,10 @@ public class testcourse {
 
     @Test
     public void testGettersAndSetters() {
-        // Test setters
+        // Mock dependencies
+        course = Mockito.spy(new Course());
+
+        // Set values using setter methods
         course.setNumCourse(1L);
         course.setLevel(2);
         course.setTypeCourse(TypeCourse.COLLECTIVE_CHILDREN);

@@ -25,7 +25,7 @@ pipeline {
                 sh "mvn -B -DskipTests package"
             }
         }
-/*
+
         stage('Junit/mockito') {
             steps {
                 sh "mvn test"
@@ -34,7 +34,7 @@ pipeline {
 /*
         stage('Code Quality Check via SonarQube') {
             steps {
-                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=admin1234"
+                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.host.url=  -Dsonar.login=admin1234"
             }
         }
 */

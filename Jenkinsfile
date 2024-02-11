@@ -39,7 +39,7 @@ pipeline {
                 sh 'mvn deploy'
             }
         }
-
+*/
         stage('Build Docker Image') {
             steps {
                 script {
@@ -49,7 +49,7 @@ pipeline {
             }
         }
 
-*/
+
         stage('Push Docker Image') {
             steps {
                 script {

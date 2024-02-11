@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        DOCKER_CREDENTIALS = credentials('docker-hub-credentials-id')
+    }
     stages {
         stage('Getting project from Git') {
             steps {
@@ -49,7 +51,7 @@ pipeline {
             }
         }
 
-
+/*
         stage('Push Docker Image') {
             steps {
                 script {
@@ -60,6 +62,17 @@ pipeline {
                 }
             }
         }
+*/
+       stage('Push') {
+                   steps {
+                       script {
+                           docker.withRegistry('https://index.docker.io/v1/', "$DOCKER_CREDENTIALS") {
+                           sh 'docker tag skitest ghassenmarzouk252/skitest:latest'
+                           sh 'docker push ghassenmarzouk252/skitest:latest'
+                           }
+                       }
+                   }
+               }
 
        stage('Docker Compose') {
             steps {

@@ -34,7 +34,7 @@ pipeline {
             }
         }
 
-        stage('Publish to Nexus') {
+       /* stage('Publish to Nexus') {
             steps {
                 sh 'mvn deploy'
             }
@@ -72,6 +72,7 @@ pipeline {
                 }
             }
         }*/
+        /*
         stage('Run Spring && MySQL Containers') {
                                 steps {
                                     script {
@@ -94,7 +95,7 @@ pipeline {
 
 
     }
-
+*/
     post {
         always {
              cleanWs()

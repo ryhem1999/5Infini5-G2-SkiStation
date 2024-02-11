@@ -48,7 +48,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image from the Dockerfile
-                    sh 'docker build -t skitest .'
+                    sh 'docker build -t ghassenmarzouk252/skitest:latest .'
                 }
             }
         }
@@ -76,6 +76,7 @@ pipeline {
                    }
                }
 */
+/*
       stage('Push') {
                   steps {
                       script {
@@ -86,7 +87,7 @@ pipeline {
 
                       }
                   }
-                }
+                }*/
        stage('Docker Compose') {
             steps {
                 script {

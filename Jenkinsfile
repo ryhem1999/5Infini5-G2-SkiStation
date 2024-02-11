@@ -71,7 +71,7 @@ pipeline {
                     sh 'docker-compose up -d'
                 }
             }
-
+       }
         /*
         stage('Run Spring && MySQL Containers') {
                                 steps {

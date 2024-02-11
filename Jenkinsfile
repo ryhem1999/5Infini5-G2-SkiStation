@@ -30,7 +30,7 @@ pipeline {
 
         stage('Code Quality Check via SonarQube') {
             steps {
-                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.host.url=http://172.10.0.140:9000 -Dsonar.login=6f70be821f0fbf77ebf37416403f05771f71b5cc"
+                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=skier -Dsonar.host.url=http://192.168.33.10:9000 -Dsonar.login=admin1234"
             }
         }
 
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image from the Dockerfile
-                    sh 'docker build -t rihemchagour-g2 .'
+                    sh 'docker build -t rihemchagour-g2 .'2
                 }
             }
         }

@@ -1,72 +1,76 @@
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import tn.esprit.spring.entities.Course;
-import tn.esprit.spring.entities.Instructor;
+package tn.esprit.spring.entities;
 
-import java.time.LocalDate;
-import java.util.HashSet;
+import java.io.Serializable;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
+import javax.persistence.*;
 
-public class InstructorMockTest {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@FieldDefaults(level=AccessLevel.PRIVATE)
+@Entity
+public class Course implements Serializable {
 
-    @InjectMocks
-    private Instructor mockInstructor;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	Long numCourse;
+	int level;
+	@Enumerated(EnumType.STRING)
+	TypeCourse typeCourse;
+	@Enumerated(EnumType.STRING)
+	Support support;
+	Float price;
+	int timeSlot;
 
-    @Mock
-    private Set<Course> mockCourses;
+	@JsonIgnore
+	@OneToMany(mappedBy= "course")
+	Set<Registration> registrations;
 
-    @BeforeEach
-    public void setUp() {
-        MockitoAnnotations.openMocks(this);
+}
+package tn.esprit.spring.entities;
 
-        when(mockInstructor.getNumInstructor()).thenReturn(1L);
-        when(mockInstructor.getFirstName()).thenReturn("MockFirstName");
-        when(mockInstructor.getLastName()).thenReturn("MockLastName");
-        when(mockInstructor.getDateOfHire()).thenReturn(LocalDate.of(2022, 1, 1));
-        when(mockInstructor.getCourses()).thenReturn(mockCourses);
+import java.io.Serializable;
+import java.util.Set;
 
-        // Set up mock for Course entity
-        Course mockCourse = new Course();
-        mockCourse.setNumCourse(101L);
-        mockCourse.setLevel(2);
-        // Set other properties of the mockCourse as needed
-        // ...
+import javax.persistence.*;
 
-        Set<Course> mockCoursesSet = new HashSet<>();
-        mockCoursesSet.add(mockCourse);
-        when(mockCourses.size()).thenReturn(mockCoursesSet.size());
-        when(mockCourses.iterator()).thenReturn(mockCoursesSet.iterator());
-    }
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@FieldDefaults(level=AccessLevel.PRIVATE)
+@Entity
+public class Course implements Serializable {
 
-    @Test
-    void testGetNumInstructorWithMock() {
-        assertEquals(1L, mockInstructor.getNumInstructor());
-    }
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	Long numCourse;
+	int level;
+	@Enumerated(EnumType.STRING)
+	TypeCourse typeCourse;
+	@Enumerated(EnumType.STRING)
+	Support support;
+	Float price;
+	int timeSlot;
 
-    @Test
-    void testGetFirstNameWithMock() {
-        assertEquals("MockFirstName", mockInstructor.getFirstName());
-    }
+	@JsonIgnore
+	@OneToMany(mappedBy= "course")
+	Set<Registration> registrations;
 
-    @Test
-    void testGetLastNameWithMock() {
-        assertEquals("MockLastName", mockInstructor.getLastName());
-    }
-
-    @Test
-    void testGetDateOfHireWithMock() {
-        assertEquals(LocalDate.of(2022, 1, 1), mockInstructor.getDateOfHire());
-    }
-
-    @Test
-    void testGetCoursesWithMock() {
-        assertEquals(1, mockInstructor.getCourses().size());
-        // Add more assertions as needed based on your actual implementation
-    }
 }

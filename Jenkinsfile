@@ -31,12 +31,12 @@ pipeline {
                 sh "mvn test"
             }
         }
-
+/*
         stage('Code Quality Check via SonarQube') {
             steps {
                 sh "mvn clean verify sonar:sonar -Dsonar.host.url=http://192.168.33.10:9000  -Dsonar.login=squ_135249f1bb5c6e3b92b1eb7044c16ecbe9b12c73"
             }
-        }
+        }*/
 
        /* stage('Publish to Nexus') {
             steps {
@@ -108,19 +108,19 @@ pipeline {
                                 }
                             }
 
-/*
+*/
 		   stage('Notification by Email') {
                                  steps {
                                      mail bcc: '',
                                          body: '''Hi Welcome to Jenkins email alerts
                      Thanks
-                     Rihem Chagour''',
+                     Ghassen Marzouk''',
                                          subject: 'Jenkins Job',
                                          to: 'ghassen.marzouk@esprit.tn'
                                  }
                              }
 
-*/
+
     }
 
     post {

@@ -109,7 +109,7 @@ pipeline {
                             }
 
 */
-		   stage('Notification by Email') {
+		/*   stage('Notification by Email') {
                                  steps {
                                      mail bcc: '',
                                          body: '''Hi Welcome to Jenkins email alerts
@@ -120,7 +120,7 @@ pipeline {
                                  }
                              }
 
-
+*/
     }
 
     post {

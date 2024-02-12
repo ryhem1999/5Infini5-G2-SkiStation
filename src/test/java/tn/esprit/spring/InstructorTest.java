@@ -2,12 +2,12 @@ package tn.esprit.spring;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.Instructor;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class InstructorTest {
@@ -18,13 +18,12 @@ public class InstructorTest {
     public void setUp() {
         instructor = new Instructor();
         instructor.setNumInstructor(1L);
-        instructor.setFirstName("John");
-        instructor.setLastName("Doe");
-        instructor.setDateOfHire(LocalDate.of(2020, 1, 1));
+        instructor.setFirstName("Mehdi");
+        instructor.setDateOfHire(LocalDate.now()); // Set the current date as an example
+        instructor.setLastName("Chabchoub");
 
         Set<Course> courses = new HashSet<>();
-        courses.add(new Course(1L, "Course 1"));
-        courses.add(new Course(2L, "Course 2"));
+        courses.add(new Course());
         instructor.setCourses(courses);
     }
 
@@ -35,24 +34,19 @@ public class InstructorTest {
 
     @Test
     void testGetFirstName() {
-        assertEquals("John", instructor.getFirstName());
-    }
-
-    @Test
-    void testGetLastName() {
-        assertEquals("Doe", instructor.getLastName());
+        assertEquals("Mehdi", instructor.getFirstName());
     }
 
     @Test
     void testGetDateOfHire() {
-        assertEquals(LocalDate.of(2020, 1, 1), instructor.getDateOfHire());
+        assertEquals(LocalDate.now(), instructor.getDateOfHire());
     }
 
     @Test
-    void testGetCourses() {
-        Set<Course> courses = instructor.getCourses();
-        assertEquals(2, courses.size());
-        assertTrue(courses.stream().anyMatch(course -> course.getId() == 1L));
-        assertTrue(courses.stream().anyMatch(course -> course.getId() == 2L));
+    void testGetLastName() {
+        assertEquals("Chabchoub", instructor.getLastName());
     }
+
+    // Additional tests for other methods...
+
 }

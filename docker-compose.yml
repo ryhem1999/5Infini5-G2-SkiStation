@@ -11,6 +11,8 @@ services:
       MYSQL_DATABASE: stationSki
     volumes:
       - db_vol:/var/lib/mysqldb
+    networks:
+      - mynetwork
 
   Universite_app:
     build: .
@@ -20,6 +22,9 @@ services:
       - "8089:8089"
     depends_on:
       - mysqldb
-
+    networks:
+      - mynetwork
+networks:
+    mynetwork:
 volumes:
   db_vol:
